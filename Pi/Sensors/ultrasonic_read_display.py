@@ -7,13 +7,18 @@ import time
 
 serial = i2c(port=1, address=0x3C)                                      # Set I2C interface
 device = ssd1309(serial)                                                # load the display reference
-
 GPIO.setmode (GPIO.BCM)                                                 # Set the GPIO mode to BCM numbering
-output_ports = [23]                                                      # Define the GPIO output port numbers
-input_ports = [24]                                                      # Define the GPIO input port numbers
+output_ports = [23,8,5,13]                                                      # Define the GPIO output port numbers
+input_ports = [24,7,6,19]                                                      # Define the GPIO input port numbers
 
-trig=23                                                                  # set trigger port
-echo=24                                                                 # set echo port
+trig1=23                                                                  # set trigger port 1
+echo1=24                                                                 # set echo port 1
+trig2=13                                                                 # set trig port 2
+echo2=19                                                                 # set echo port 2
+trig3=5                                                                 # set trig port 3
+echo3=6                                                                 # set echo port 3
+trig4=8                                                                 # set trig port 4
+echo4=7                                                                 # set trig port 2                                                            # set echo port
 
 # HC-SR04 ULTRASONIC DISTANCE SENSOR                                *
 # *******************************************************************
@@ -27,7 +32,7 @@ echo=24                                                                 # set ec
 # * returned.                                                       *
 # *******************************************************************
 
-def get_distance():
+def get_distance(echo, trig):
     if GPIO.input (echo):                                               # If the 'Echo' pin is already high
         return (-1)                                                     # then exit with error code
 
@@ -78,12 +83,19 @@ def get_distance():
     distance = (time2 - time1) / 0.00000295 / 2 / 10                    # Convert the timer values into centimetres
     return (distance)                                                   # Exit with the distance in centimetres
 
-def draw_display(distRead):
+def draw_display(dist1, dist2, dist3, dist4):
     with canvas(device) as draw:
         draw.rectangle(device.bounding_box, outline="white", fill="black")
-        draw.text((30, 40), str(distRead), fill="white")
+        draw.text((0, 0), str(dist1), fill="white")
+        draw.text((0, 10), str(dist2), fill="white")
+        draw.text((0, 20), str(dist3), fill="white")
+        draw.text((0, 30), str(dist4), fill="white")
 
 if __name__ == "__main__":
+    distance1 = 1
+    distance2 = 1
+    distance3 = 1
+    distance4 = 1
     for bit in output_ports:                                                # Set up the six output bits
         GPIO.setup (bit,GPIO.OUT)
         GPIO.output (bit,False)                                             # Initially turn them all off
@@ -91,7 +103,17 @@ if __name__ == "__main__":
     for bit in input_ports:                                                 # Set up the six input bits
         GPIO.setup (bit,GPIO.IN, pull_up_down = GPIO.PUD_DOWN)              # Set the inputs as normally low
     while True:
-        distance = get_distance()
-        if distance >0:
-            draw_display(distance)
-            #print(distance)
+        temp1 = get_distance(echo1, trig1)
+        temp2 = get_distance(echo2, trig2)
+        temp3 = get_distance(echo3, trig3)
+        temp4 = get_distance(echo4, trig4)
+        if temp1>0:
+            distance1 = temp1
+        if temp2>0:
+            distance2 = temp2
+        if temp3>0:
+            distance3 = temp3
+        if temp4>0:
+            distance4 = temp4
+
+        draw_display(distance1, distance2, distance3, distance4)
