@@ -84,12 +84,17 @@ def get_distance(echo, trig):
     return (distance)                                                   # Exit with the distance in centimetres
 
 def draw_display(dist1, dist2, dist3, dist4):
-    with canvas(device) as draw:
-        draw.rectangle(device.bounding_box, outline="white", fill="black")
-        draw.text((0, 0), str(dist1), fill="white")
-        draw.text((0, 10), str(dist2), fill="white")
-        draw.text((0, 20), str(dist3), fill="white")
-        draw.text((0, 30), str(dist4), fill="white")
+    try:
+        with canvas(device) as draw:
+            #draw.rectangle(device.bounding_box, outline="white", fill="black")
+            draw.text((0, 0), str(dist1), fill="white")
+            draw.text((0, 10), str(dist2), fill="white")
+            draw.text((0, 20), str(dist3), fill="white")
+            draw.text((0, 30), str(dist4), fill="white")
+    except:
+        #call the draw function again
+        time.sleep(0.01)
+        draw_display(dist1, dist2, dist3, dist4)
 
 if __name__ == "__main__":
     distance1 = 1
@@ -115,5 +120,6 @@ if __name__ == "__main__":
             distance3 = temp3
         if temp4>0:
             distance4 = temp4
-
+        
+        time.sleep(0.01)
         draw_display(distance1, distance2, distance3, distance4)
