@@ -1,0 +1,41 @@
+<html>
+    <head>
+            <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <form>
+            <input type="button" Value="on" onclick="turnOn()">
+            <input type="button" value="off" onclick="turnOff()">
+        </form>
+    </body>
+</html>
+<script>
+function turnOn(){
+$.ajax({
+    url: 'http://localhost:8000/api/display/on',
+    type: "GET",
+    dataType: "json",
+    success: function (data) {
+        console.log(data);
+    },
+    error: function (error) {
+        console.log(`Error ${error}`);
+    }
+});
+}
+
+function turnOff(){
+$.ajax({
+    url: 'http://localhost:8000/api/display/off',
+    type: "GET",
+    dataType: "json",
+    success: function (data) {
+        console.log(data);
+    },
+    error: function (error) {
+        console.log(`Error ${error}`);
+    }
+});
+}
+
+</script>
