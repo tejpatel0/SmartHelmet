@@ -92,33 +92,34 @@ def draw_display(dist1, dist2, dist3, dist4):
             #print("sensor 3 is:", dist3)
             #print("sensor 4 is:", dist4)
             if(dist1<350 and dist1>275):
-                draw.polygon([(0, 0), (0,20), (20, 0)], outline="yellow", fill="black")
+                draw.polygon([(0, 0), (0, 10), (10, 0)], outline="yellow", fill="black")
             elif(dist1>180 and dist1<=275):
                 draw.polygon([(0, 0), (0, 15), (15, 0)], outline="yellow", fill="black")
             elif(dist1>10 and dist1<=180):
-                draw.polygon([(0, 0), (0, 10), (10, 0)], outline="yellow", fill="black")
+                draw.polygon([(0, 0), (0,20), (20, 0)], outline="yellow", fill="black")
                 
 
             if(dist2<350 and dist2>275):
-                draw.polygon([(0, 55), (0, 35), (20, 55)], outline="yellow", fill="black")
+                draw.polygon([(0, 55), (0, 45), (10, 55)], outline="yellow", fill="black")
             elif(dist2>180 and dist2<=275):
                 draw.polygon([(0, 55), (0, 40), (15, 55)], outline="yellow", fill="black")
             elif(dist2>10 and dist2<=180):
-                draw.polygon([(0, 55), (0, 45), (10, 55)], outline="yellow", fill="black")
+                draw.polygon([(0, 55), (0, 35), (20, 55)], outline="yellow", fill="black")
                 
             if(dist3<350 and dist3>275):
-                draw.polygon([(125, 0), (105, 0), (125, 20)], outline="yellow", fill="black")
+                draw.polygon([(125, 0), (115, 0), (125, 10)], outline="yellow", fill="black")
             elif(dist3>180 and dist3<=275):
                 draw.polygon([(125, 0), (110, 0), (125, 15)], outline="yellow", fill="black")
             elif(dist3>10 and dist3<=180):
-                draw.polygon([(125, 0), (115, 0), (125, 10)], outline="yellow", fill="black")
+                draw.polygon([(125, 0), (105, 0), (125, 20)], outline="yellow", fill="black")
 
             if(dist4<350 and dist4>275):
-                draw.polygon([(125, 55), (105, 55), (125, 35)], outline="yellow", fill="black")
+                draw.polygon([(125, 55), (115, 55), (125, 45)], outline="yellow", fill="black")
             elif(dist4>180 and dist4<=275):
                 draw.polygon([(125, 55), (110, 55), (125, 40)], outline="yellow", fill="black")
             elif(dist4>10 and dist4<=180):
-                draw.polygon([(125, 55), (115, 55), (125, 45)], outline="yellow", fill="black")
+                draw.polygon([(125, 55), (105, 55), (125, 35)], outline="yellow", fill="black")
+                
     except:
         #call the draw function again
         time.sleep(0.01)
