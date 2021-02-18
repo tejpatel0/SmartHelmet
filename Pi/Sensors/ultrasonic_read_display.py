@@ -86,11 +86,39 @@ def get_distance(echo, trig):
 def draw_display(dist1, dist2, dist3, dist4):
     try:
         with canvas(device) as draw:
-            #draw.rectangle(device.bounding_box, outline="white", fill="black")
-            draw.text((0, 0), str(dist1), fill="white")
-            draw.text((0, 10), str(dist2), fill="white")
-            draw.text((0, 20), str(dist3), fill="white")
-            draw.text((0, 30), str(dist4), fill="white")
+            # First we check for 9-12 ft range, then 6-9, then 0-6.
+            #print("sensor 1 is:", dist1)
+            #print("sensor 2 is:", dist2)
+            #print("sensor 3 is:", dist3)
+            #print("sensor 4 is:", dist4)
+            if(dist1<350 and dist1>275):
+                draw.polygon([(0, 0), (0,20), (20, 0)], outline="yellow", fill="black")
+            elif(dist1>180 and dist1<=275):
+                draw.polygon([(0, 0), (0, 15), (15, 0)], outline="yellow", fill="black")
+            elif(dist1>10 and dist1<=180):
+                draw.polygon([(0, 0), (0, 10), (10, 0)], outline="yellow", fill="black")
+                
+
+            if(dist2<350 and dist2>275):
+                draw.polygon([(0, 55), (0, 35), (20, 55)], outline="yellow", fill="black")
+            elif(dist2>180 and dist2<=275):
+                draw.polygon([(0, 55), (0, 40), (15, 55)], outline="yellow", fill="black")
+            elif(dist2>10 and dist2<=180):
+                draw.polygon([(0, 55), (0, 45), (10, 55)], outline="yellow", fill="black")
+                
+            if(dist3<350 and dist3>275):
+                draw.polygon([(125, 0), (105, 0), (125, 20)], outline="yellow", fill="black")
+            elif(dist3>180 and dist3<=275):
+                draw.polygon([(125, 0), (110, 0), (125, 15)], outline="yellow", fill="black")
+            elif(dist3>10 and dist3<=180):
+                draw.polygon([(125, 0), (115, 0), (125, 10)], outline="yellow", fill="black")
+
+            if(dist4<350 and dist4>275):
+                draw.polygon([(125, 55), (105, 55), (125, 35)], outline="yellow", fill="black")
+            elif(dist4>180 and dist4<=275):
+                draw.polygon([(125, 55), (110, 55), (125, 40)], outline="yellow", fill="black")
+            elif(dist4>10 and dist4<=180):
+                draw.polygon([(125, 55), (115, 55), (125, 45)], outline="yellow", fill="black")
     except:
         #call the draw function again
         time.sleep(0.01)
@@ -113,13 +141,13 @@ if __name__ == "__main__":
         temp3 = get_distance(echo3, trig3)
         temp4 = get_distance(echo4, trig4)
         if temp1>0:
-            distance1 = temp1
+            distance1 = round(temp1)
         if temp2>0:
-            distance2 = temp2
+            distance2 = round(temp2)
         if temp3>0:
-            distance3 = temp3
+            distance3 = round(temp3)
         if temp4>0:
-            distance4 = temp4
+            distance4 = round(temp4)
         
         time.sleep(0.01)
         draw_display(distance1, distance2, distance3, distance4)
