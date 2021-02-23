@@ -27,8 +27,19 @@ app.get('/api/display/:status', (req, res) => {
     if(status == 'on'){
         shell.exec('sudo systemctl start sensing.service')
         res.json({success:"display turned on for detection"})
+        console.log("Hit on!")
     }else{
         shell.exec('sudo systemctl stop sensing.service')
         res.json({success:"display turned off for detection"})
+    }
+})
+
+app.get('/api/displaySymbols/:style', (req, res) => {
+    var style = req.param('style')
+    if(style == 'arrows'){
+        shell.exec('sudo echo "arrows" > /etc/sensing/sensing.config')
+        res.json({success:"display changed to arrows"})
+    }else if(style == "circles"){
+        shell.exec('sudo echo "circles" > /etc/sensing/sensing.config')
     }
 })
