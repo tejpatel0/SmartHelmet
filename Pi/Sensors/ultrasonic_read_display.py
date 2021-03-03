@@ -15,9 +15,9 @@ trig2=23                 # mid left
 echo2=24                                                                 
 trig1=13                 # far left                                       
 echo1=19                                                                 
-trig3=5                                                                 
+trig3=5                  # behind                                               
 echo3=6                                                                 
-trig4=8                                                                 
+trig4=8                  # mid right                                              
 echo4=7                                                                
 trig5=21                 # far right                                    
 echo5=20                                                                
@@ -94,45 +94,54 @@ def draw_display(dist1, dist2, dist3, dist4, dist5):
             #print("sensor 3 is:", dist3)
             #print("sensor 4 is:", dist4)
             if(dist1<350 and dist1>275 and dist1>0):
-                draw.polygon([(0, 0), (0, 10), (10, 0)], outline="yellow", fill="black")
+                draw.polygon([(12.5, 6.875), (0, 13.75), (12.5, 20.625)], outline="yellow", fill="black")
             elif(dist1>180 and dist1<=275 and dist1>0):
-                draw.polygon([(0, 0), (0, 15), (15, 0)], outline="yellow", fill="black")
+                draw.polygon([(17.5, 4.125), (0, 13.75), (17.5, 23.375)], outline="yellow", fill="black")
             elif(dist1>100 and dist1<=180 and dist1>0):
-                draw.polygon([(0, 0), (0,20), (20, 0)], outline="yellow", fill="black")
+                draw.polygon([(25, 0), (0,13.75), (25, 27.5)], outline="yellow", fill="black")
             elif(dist1>1 and dist1<=100 and dist1>0):
-                draw.polygon([(0, 0), (0,20), (20, 0)], outline="yellow", fill="white")
+                draw.polygon([(25, 0), (0,13.75), (25, 27.5)], outline="yellow", fill="white")
                 
             if(dist2<350 and dist2>275 and dist2>0):
-                draw.polygon([(0, 55), (0, 45), (10, 55)], outline="yellow", fill="black")
+                draw.polygon([(12.5, 48.125), (0, 41.25), (12.5, 34.375)], outline="yellow", fill="black")
             elif(dist2>180 and dist2<=275 and dist2>0):
-                draw.polygon([(0, 55), (0, 40), (15, 55)], outline="yellow", fill="black")
+                draw.polygon([(17.5, 50.875), (0, 41.25), (17.5, 31.625)], outline="yellow", fill="black")
             elif(dist2>100 and dist2<=180 and dist2>0):
-                draw.polygon([(0, 55), (0, 35), (20, 55)], outline="yellow", fill="black")
+                draw.polygon([(25, 55), (0,41.25), (25, 27.5)], outline="yellow", fill="black")
             elif(dist2>1 and dist2<=100 and dist2>0):
-                draw.polygon([(0, 55), (0,35), (20, 55)], outline="yellow", fill="white")
-            
+                draw.polygon([(25, 55), (0,41.25), (25, 27.5)], outline="yellow", fill="white")
+
             if(dist3<350 and dist3>275 and dist3>0):
-                draw.polygon([(125, 0), (115, 0), (125, 10)], outline="yellow", fill="black")
+                draw.polygon([(62.5, 55), (55.625,42.5), (69.375, 42.5)], outline="yellow", fill="black")
             elif(dist3>180 and dist3<=275 and dist3>0):
-                draw.polygon([(125, 0), (110, 0), (125, 15)], outline="yellow", fill="black")
+                draw.polygon([(62.5, 55), (52.875,37.5), (72.125, 37.5)], outline="yellow", fill="black")
             elif(dist3>100 and dist3<=180 and dist3>0):
-                draw.polygon([(125, 0), (105, 0), (125, 20)], outline="yellow", fill="black")
+                draw.polygon([(62.5, 55), (48.75,30), (76.25, 30)], outline="yellow", fill="black")
             elif(dist3>1 and dist3<=100 and dist3>0):
-                draw.polygon([(125, 0), (105, 0), (125, 20)], outline="yellow", fill="white")
+                draw.polygon([(62.5, 55), (48.75,30), (76.25, 30)], outline="yellow", fill="white")
 
             if(dist4<350 and dist4>275 and dist4>0):
-                draw.polygon([(125, 55), (115, 55), (125, 45)], outline="yellow", fill="black")
+                draw.polygon([(112.5, 48.125), (125, 41.25), (112.5, 34.375)], outline="yellow", fill="black")
             elif(dist4>180 and dist4<=275 and dist4>0):
-                draw.polygon([(125, 55), (110, 55), (125, 40)], outline="yellow", fill="black")
+                draw.polygon([(107.5, 50.875), (125, 41.25), (107.5, 31.625)], outline="yellow", fill="black")
             elif(dist4>100 and dist4<=180 and dist4>0):
-                draw.polygon([(125, 55), (105, 55), (125, 35)], outline="yellow", fill="black")
+                draw.polygon([(100, 55), (125, 41.25), (100, 27.5)], outline="yellow", fill="black")
             elif(dist4>1 and dist4<=100 and dist4>0):
-                draw.polygon([(125, 55), (105, 55), (125, 35)], outline="yellow", fill="white")
+                draw.polygon([(100, 55), (125, 41.25), (100, 27.5)], outline="yellow", fill="white")
+
+            if(dist5<350 and dist5>275 and dist5>0):
+                draw.polygon([(112.5, 6.875), (125, 13.75), (112.5, 20.625)], outline="yellow", fill="black")
+            elif(dist5>180 and dist5<=275 and dist5>0):
+                draw.polygon([(107.5, 4.125), (125, 13.75), (107.5, 23.375)], outline="yellow", fill="black")
+            elif(dist5>100 and dist5<=180 and dist5>0):
+                draw.polygon([(100, 0), (125, 13.75), (100, 27.5)], outline="yellow", fill="black")
+            elif(dist5>1 and dist5<=100 and dist5>0):
+                draw.polygon([(100, 0), (125, 13.75), (100, 27.5)], outline="yellow", fill="white")
 
     except:
         #call the draw function again
         time.sleep(0.01)
-        draw_display(dist1, dist2, dist3, dist4)
+        draw_display(dist1, dist2, dist3, dist4, dist5)
 
 if __name__ == "__main__":
     distance1 = 1
@@ -159,6 +168,7 @@ if __name__ == "__main__":
         distance3 = round(temp3)
         #if temp4>0:
         distance4 = round(temp4)
+        distance5 = round(temp5)
         
         time.sleep(0.01)
-        draw_display(distance1, distance2, distance3, distance4)
+        draw_display(distance1, distance2, distance3, distance4, distance5)
