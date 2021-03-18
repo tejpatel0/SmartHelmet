@@ -86,8 +86,8 @@ if __name__ == "__main__":
     value3 = sensor.Measurement(trig3, echo3)
     value4 = sensor.Measurement(trig4, echo4)
     value5 = sensor.Measurement(trig5, echo5)
-    samples = 7 # number of samples taken at once
-    speed = 0.1 # time between individual readings
+    samples = 2 # number of samples taken at once
+    speed = 0.05 # time between individual readings
     while True:
         distance1 = value1.raw_distance(sample_size=samples, sample_wait=speed)
         distance2 = value2.raw_distance(sample_size=samples, sample_wait=speed)
