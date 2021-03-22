@@ -3,13 +3,58 @@
             <script src="assets/jquery.js" type="text/javascript"></script>
 
     </head>
+    <style>
+        .content {
+          max-width: 500px;
+          margin: auto;
+          align-items: center;
+        }
+
+        .header {
+            padding: 60px;
+            text-align: center;
+            background: #1abc9c;
+            color: white;
+            font-size: 30px;
+        }
+        
+        .buttonFunction {
+            display: inline-block;
+            background-color: #4c90af;
+            border: none;
+            color: white;
+            padding: 15px 25px;
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        .buttonMode {
+            display: inline-block;
+            background-color: #723f72;
+            border: none;
+            color: white;
+            padding: 15px 25px;
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+        }
+    </style>
     <body>
+    <div class="header">
+        <h1>Smart Helmet</h1>
+        <p>Control your Smart Helmet!</p>
+    </div> 
+    <div class="content">
         <form>
-            <input type="button" Value="on" onclick="turnOn()">
-            <input type="button" value="off" onclick="turnOff()">
-            <input type="button" value="arrows" onclick="changeToArrows()">
-            <input type="button" value="circles" onclick="changeToCircles()">
+            <input type="button" class="buttonFunction" Value="Start Sensing" onclick="turnOn()">
+            <input type="button" class="buttonFunction" value="Pause Sensing" onclick="turnOff()">
+            <input type="button" class="buttonMode" value="Arrow Configuration" onclick="changeToArrows()">
+            <input type="button" class="buttonMode" value="Circle Configuration" onclick="changeToCircles()">
         </form>
+    </div>
     </body>
 </html>
 <script>

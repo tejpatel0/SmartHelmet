@@ -10,16 +10,16 @@ serial = i2c(port=1, address=0x3C)                                      # Set I2
 device = ssd1309(serial)                                                # load the display reference
 GPIO.setmode (GPIO.BCM)                                                 # Set the GPIO mode to BCM numbering
 
-trig2=23                 # mid left                                       
-echo2=24                                                                 
-trig1=13                 # far left                                       
-echo1=19                                                                 
+trig4=23                 # mid right                                       
+echo4=24                                                                 
+trig5=13                 # far right                                       
+echo5=19                                                                 
 trig3=5                  # behind                                               
 echo3=6                                                                 
-trig4=8                  # mid right                                              
-echo4=7                                                                
-trig5=21                 # far right                                    
-echo5=20                                                                
+trig2=8                  # mid left                                              
+echo2=7                                                                
+trig1=21                 # far left                                    
+echo1=20                                                                
 
 def draw_display(dist1, dist2, dist3, dist4, dist5):
     try:
