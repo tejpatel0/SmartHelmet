@@ -43,3 +43,13 @@ app.get('/api/displaySymbols/:style', (req, res) => {
         shell.exec('sudo echo "circles" > /etc/sensing/sensing.config')
     }
 })
+
+app.get('/api/changeFill/:toggle', (req, res) => {
+    var toggle = req.param('toggle')
+    if(toggle == 'on'){
+        shell.exec('sudo echo "fill" > /etc/sensing/design.config')
+        res.json({success:"display changed to filled"})
+    }else if(toggle == "off"){
+        shell.exec('sudo echo "unfill" > /etc/sensing/design.config')
+    }
+})
